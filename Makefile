@@ -10,13 +10,15 @@ DEFINES += -DCHECK
 CFLAGS = $(DEBUG) -Wall -Wshadow -Wunreachable-code -Wredundant-decls \
         -Wmissing-declarations -Wold-style-definition -Wmissing-prototypes \
         -Wdeclaration-after-statement $(DEFINES)
-PROG = beavalloc
+PROG = mystat
 
 
 all: $(PROG)
 
+mystat: mystat.o
+	$(CC) $(CFLAG) -o $@ $^
 
-mystat: mystat.c mystat.h
+mystat.o: mystat.c mystat.h
 	$(CC) $(CFLAGS) -c $<
 
 opt: clean
